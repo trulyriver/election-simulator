@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Election of 1940</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      max-width: 750px;
+      margin: auto;
+      padding: 20px;
+      background: #f4f4f4;
+    }
+    .candidate {
+      padding: 15px;
+      margin: 10px 0;
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      color: white;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+    .candidate img {
+      width: 80px;
+      height: 80px;
+      border-radius: 8px;
+      margin-right: 15px;
+      object-fit: cover;
+      flex-shrink: 0;
+      border: 2px solid white;
+    }
+    .candidate-details {
+      flex-grow: 1;
+    }
+    button {
+      padding: 10px 15px;
+      margin-top: 10px;
+      background: #007bff;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    button:hover {
+      background: #0056b3;
+    }
+
+    .republican { background-color: #e81b23; }
+    .democrat { background-color: #3333ff; }
+  </style>
+</head>
+<body>
+  <h1>U.S. Presidential Election Simulator</h1>
+  <h2>Election of 1940</h2>
+
+  <div class="candidate democrat">
+    <img src="franklin_d_roosevelt.jpg" alt="Franklin D. Roosevelt" />
+    <div class="candidate-details">
+      <h3>Franklin D. Roosevelt</h3>
+      <p><strong>Party:</strong> Democrat</p>
+      <p><strong>Bio:</strong> Incumbent president seeking a third term, focused on leading the country through recovery and increasing global tensions.</p>
+      <button onclick="vote('Franklin D. Roosevelt')">Vote for Franklin D. Roosevelt</button>
+    </div>
+  </div>
+
+  <div class="candidate republican">
+    <img src="wendell_willkie.jpg" alt="Wendell Willkie" />
+    <div class="candidate-details">
+      <h3>Wendell Willkie</h3>
+      <p><strong>Party:</strong> Republican</p>
+      <p><strong>Bio:</strong> Businessman and political outsider who criticized FDR’s third-term run and expanded federal government.</p>
+      <button onclick="vote('Wendell Willkie')">Vote for Wendell Willkie</button>
+    </div>
+  </div>
+
+  <script>
+    function vote(candidate) {
+      localStorage.setItem('vote_1940', candidate);
+      window.location.href = '1944.html'; // Redirect to next election page
+    }
+  </script>
+</body>
+</html>

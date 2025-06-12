@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Election of 1988</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      max-width: 750px;
+      margin: auto;
+      padding: 20px;
+      background: #f4f4f4;
+    }
+    .candidate {
+      padding: 15px;
+      margin: 10px 0;
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      color: white;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+    .candidate img {
+      width: 80px;
+      height: 80px;
+      border-radius: 8px;
+      margin-right: 15px;
+      object-fit: cover;
+      flex-shrink: 0;
+      border: 2px solid white;
+    }
+    .candidate-details {
+      flex-grow: 1;
+    }
+    button {
+      padding: 10px 15px;
+      margin-top: 10px;
+      background: #007bff;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    button:hover {
+      background: #0056b3;
+    }
+
+    .republican { background-color: #e81b23; }
+    .democrat { background-color: #3333ff; }
+  </style>
+</head>
+<body>
+  <h1>U.S. Presidential Election Simulator</h1>
+  <h2>Election of 1988</h2>
+
+  <div class="candidate republican">
+    <img src="george_hw_bush.jpg" alt="George H. W. Bush" />
+    <div class="candidate-details">
+      <h3>George H. W. Bush</h3>
+      <p><strong>Party:</strong> Republican</p>
+      <p><strong>Bio:</strong> Vice President under Reagan, known for his experience in foreign policy and campaign promise: “Read my lips: no new taxes.”</p>
+      <button onclick="vote('George H. W. Bush')">Vote for George H. W. Bush</button>
+    </div>
+  </div>
+
+  <div class="candidate democrat">
+    <img src="michael_dukakis.jpg" alt="Michael Dukakis" />
+    <div class="candidate-details">
+      <h3>Michael Dukakis</h3>
+      <p><strong>Party:</strong> Democrat</p>
+      <p><strong>Bio:</strong> Governor of Massachusetts, ran on a platform of competence and social liberalism, but struggled with national defense image.</p>
+      <button onclick="vote('Michael Dukakis')">Vote for Michael Dukakis</button>
+    </div>
+  </div>
+
+  <script>
+    function vote(candidate) {
+      localStorage.setItem('vote_1988', candidate);
+      window.location.href = '1992.html'; // Redirect to next election page
+    }
+  </script>
+</body>
+</html>

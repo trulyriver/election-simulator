@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Election of 1856</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      max-width: 700px;
+      margin: auto;
+      padding: 20px;
+      background: #f4f4f4;
+    }
+    .candidate {
+      padding: 15px;
+      margin: 10px 0;
+      border-radius: 8px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      display: flex;
+      align-items: center;
+      color: white;
+    }
+    .candidate img {
+      width: 80px;
+      height: 80px;
+      border-radius: 8px;
+      margin-right: 15px;
+      object-fit: cover;
+      flex-shrink: 0;
+      border: 2px solid white;
+    }
+    .candidate-details {
+      flex-grow: 1;
+    }
+    button {
+      padding: 10px 15px;
+      margin-top: 10px;
+      background: #007bff;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    button:hover {
+      background: #0056b3;
+    }
+
+    .buchanan { background-color: #3333ff; }  /* Democrat - Blue */
+    .fremont { background-color: #e81b23; }   /* Republican - Red */
+    .fillmore { background-color: #d99fe8; }  /* Know Nothing - Olive */
+  </style>
+</head>
+<body>
+  <h1>U.S. Presidential Election Simulator</h1>
+  <h2>Election of 1856</h2>
+
+  <div class="candidate buchanan">
+    <img src="james_buchanan.jpg" alt="James Buchanan" />
+    <div class="candidate-details">
+      <h3>James Buchanan</h3>
+      <p><strong>Party:</strong> Democrat</p>
+      <p><strong>Bio:</strong> Former Secretary of State and minister to the UK, seen as a compromise candidate with foreign policy experience.</p>
+      <button onclick="vote('James Buchanan')">Vote for James Buchanan</button>
+    </div>
+  </div>
+
+  <div class="candidate fremont">
+    <img src="john_c_fremont.jpg" alt="John C. Frémont" />
+    <div class="candidate-details">
+      <h3>John C. Frémont</h3>
+      <p><strong>Party:</strong> Republican</p>
+      <p><strong>Bio:</strong> Explorer and military officer; first Republican presidential nominee opposing the spread of slavery in the territories.</p>
+      <button onclick="vote('John C. Frémont')">Vote for John C. Frémont</button>
+    </div>
+  </div>
+
+  <div class="candidate fillmore">
+    <img src="millard_fillmore.jpg" alt="Millard Fillmore" />
+    <div class="candidate-details">
+      <h3>Millard Fillmore</h3>
+      <p><strong>Party:</strong> Know Nothing (American)</p>
+      <p><strong>Bio:</strong> Former president running on a nativist platform focusing on anti-immigrant and anti-Catholic sentiments.</p>
+      <button onclick="vote('Millard Fillmore')">Vote for Millard Fillmore</button>
+    </div>
+  </div>
+
+  <script>
+    function vote(candidate) {
+      localStorage.setItem('vote_1856', candidate);
+      window.location.href = '1860.html'; // Next election
+    }
+  </script>
+</body>
+</html>

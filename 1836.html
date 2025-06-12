@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Election of 1836</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      max-width: 700px;
+      margin: auto;
+      padding: 20px;
+      background: #f4f4f4;
+    }
+    .candidate {
+      padding: 15px;
+      margin: 10px 0;
+      border-radius: 8px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      display: flex;
+      align-items: center;
+      color: white;
+    }
+    .candidate img {
+      width: 80px;
+      height: 80px;
+      border-radius: 8px;
+      margin-right: 15px;
+      object-fit: cover;
+      flex-shrink: 0;
+      border: 2px solid white;
+    }
+    .candidate-details {
+      flex-grow: 1;
+    }
+    button {
+      padding: 10px 15px;
+      margin-top: 10px;
+      background: #007bff;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    button:hover {
+      background: #0056b3;
+    }
+    /* Different background colors per candidate */
+    .van_buren { background-color: #3333ff; }       /* Dodger Blue */
+    .harrison { background-color: #f0c862; }        /* Crimson Red */
+    .white { background-color: #800080; }           /* Lime Green */
+    .webster { background-color: #f88379; }         /* Dark Orange */
+    .mangum { background-color: #006d61; }          /* Blue Violet */
+  </style>
+</head>
+<body>
+  <h1>U.S. Presidential Election Simulator</h1>
+  <h2>Election of 1836</h2>
+
+  <div class="candidate van_buren">
+    <img src="martin_van_buren.jpg" alt="Martin Van Buren" />
+    <div class="candidate-details">
+      <h3>Martin Van Buren</h3>
+      <p><strong>Party:</strong> Democrat</p>
+      <p><strong>Bio:</strong> Vice President under Andrew Jackson, advocated for continuation of Jacksonian policies.</p>
+      <button onclick="vote('Martin Van Buren')">Vote for Martin Van Buren</button>
+    </div>
+  </div>
+
+  <div class="candidate harrison">
+    <img src="william_henry_harrison.jpg" alt="William Henry Harrison" />
+    <div class="candidate-details">
+      <h3>William Henry Harrison</h3>
+      <p><strong>Party:</strong> Whig</p>
+      <p><strong>Bio:</strong> War hero and former governor, known for his military leadership.</p>
+      <button onclick="vote('William Henry Harrison')">Vote for William Henry Harrison</button>
+    </div>
+  </div>
+
+  <div class="candidate white">
+    <img src="hugh_lawson_white.jpg" alt="Hugh Lawson White" />
+    <div class="candidate-details">
+      <h3>Hugh Lawson White</h3>
+      <p><strong>Party:</strong> Whig</p>
+      <p><strong>Bio:</strong> Senator from Tennessee, one of several regional Whig candidates.</p>
+      <button onclick="vote('Hugh Lawson White')">Vote for Hugh Lawson White</button>
+    </div>
+  </div>
+
+  <div class="candidate webster">
+    <img src="daniel_webster.jpg" alt="Daniel Webster" />
+    <div class="candidate-details">
+      <h3>Daniel Webster</h3>
+      <p><strong>Party:</strong> Whig</p>
+      <p><strong>Bio:</strong> Senator from Massachusetts, notable orator and statesman.</p>
+      <button onclick="vote('Daniel Webster')">Vote for Daniel Webster</button>
+    </div>
+  </div>
+
+  <div class="candidate mangum">
+    <img src="willie_person_mangum.jpg" alt="Willie Person Mangum" />
+    <div class="candidate-details">
+      <h3>Willie Person Mangum</h3>
+      <p><strong>Party:</strong> Whig</p>
+      <p><strong>Bio:</strong> Senator from North Carolina, another regional Whig candidate.</p>
+      <button onclick="vote('Willie Person Mangum')">Vote for Willie Person Mangum</button>
+    </div>
+  </div>
+
+  <script>
+    function vote(candidate) {
+      localStorage.setItem('vote_1836', candidate);
+      window.location.href = '1840.html'; // Redirect to next election page
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Election of 1816</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      max-width: 700px;
+      margin: auto;
+      padding: 20px;
+      background: #f4f4f4;
+    }
+    .candidate {
+      padding: 15px;
+      margin: 10px 0;
+      border-radius: 8px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      display: flex;
+      align-items: center;
+      color: white;
+    }
+    .candidate img {
+      width: 80px;
+      height: 80px;
+      border-radius: 8px;
+      margin-right: 15px;
+      object-fit: cover;
+      flex-shrink: 0;
+      border: 2px solid white;
+    }
+    .candidate-details {
+      flex-grow: 1;
+    }
+    button {
+      padding: 10px 15px;
+      margin-top: 10px;
+      background: #007bff;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    button:hover {
+      background: #0056b3;
+    }
+    /* Different background colors per candidate */
+    .monroe { background-color: #008000; }       /* Dodger Blue */
+    .king { background-color: #ea9978; }        /* Crimson Red */
+     </style>
+</head>
+<body>
+  <h1>U.S. Presidential Election Simulator</h1>
+  <h2>Election of 1816</h2>
+
+     <div class="candidate monroe">
+    <img src="james_monroe.jpg" alt="James Monroe" />
+    <div class="candidate-details blue">
+      <h3>James Monroe</h3>
+      <p><strong>Party:</strong> Democratic-Republican</p>
+      <p><strong>Bio:</strong> Former Secretary of State and Secretary of War, war hero and symbol of post-war national unity.</p>
+      <button onclick="vote('James Monroe')">Vote for James Monroe</button>
+    </div>
+  </div>
+
+  <div class="candidate king">
+    <img src="rufus_king.jpg" alt="Rufus King" />
+    <div class="candidate-details red">
+      <h3>Rufus King</h3>
+      <p><strong>Party:</strong> Federalist</p>
+      <p><strong>Bio:</strong> Last major Federalist candidate, former senator and diplomat, supported a strong central government and opposition to slavery expansion.</p>
+      <button onclick="vote('Rufus King')">Vote for Rufus King</button>
+    </div>
+  </div>
+
+  <script>
+    function vote(candidate) {
+      localStorage.setItem('vote_1816', candidate);
+      window.location.href = '1820.html'; // Redirect to next election
+    }
+  </script>
+</body>
+</html>
+

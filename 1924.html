@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Election of 1924</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      max-width: 750px;
+      margin: auto;
+      padding: 20px;
+      background: #f4f4f4;
+    }
+    .candidate {
+      padding: 15px;
+      margin: 10px 0;
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      color: white;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+    .candidate img {
+      width: 80px;
+      height: 80px;
+      border-radius: 8px;
+      margin-right: 15px;
+      object-fit: cover;
+      flex-shrink: 0;
+      border: 2px solid white;
+    }
+    .candidate-details {
+      flex-grow: 1;
+    }
+    button {
+      padding: 10px 15px;
+      margin-top: 10px;
+      background: #007bff;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    button:hover {
+      background: #0056b3;
+    }
+
+    .republican { background-color: #e81b23; }
+    .democrat { background-color: #3333ff; }
+    .progressive { background-color: #a2ed70; }
+  </style>
+</head>
+<body>
+  <h1>U.S. Presidential Election Simulator</h1>
+  <h2>Election of 1924</h2>
+
+  <div class="candidate republican">
+    <img src="calvin_coolidge.jpg" alt="Calvin Coolidge" />
+    <div class="candidate-details">
+      <h3>Calvin Coolidge</h3>
+      <p><strong>Party:</strong> Republican</p>
+      <p><strong>Bio:</strong> Incumbent president known for small government policies and business-friendly approach.</p>
+      <button onclick="vote('Calvin Coolidge')">Vote for Calvin Coolidge</button>
+    </div>
+  </div>
+
+  <div class="candidate democrat">
+    <img src="john_w_davis.jpg" alt="John W. Davis" />
+    <div class="candidate-details">
+      <h3>John W. Davis</h3>
+      <p><strong>Party:</strong> Democrat</p>
+      <p><strong>Bio:</strong> Former Ambassador and lawyer, nominated after a deadlocked convention.</p>
+      <button onclick="vote('John W. Davis')">Vote for John W. Davis</button>
+    </div>
+  </div>
+
+  <div class="candidate progressive">
+    <img src="robert_la_follette.jpg" alt="Robert M. La Follette" />
+    <div class="candidate-details">
+      <h3>Robert M. La Follette</h3>
+      <p><strong>Party:</strong> Progressive</p>
+      <p><strong>Bio:</strong> Senator from Wisconsin running on a platform of labor rights and anti-monopoly reform.</p>
+      <button onclick="vote('Robert M. La Follette')">Vote for Robert M. La Follette</button>
+    </div>
+  </div>
+
+  <script>
+    function vote(candidate) {
+      localStorage.setItem('vote_1924', candidate);
+      window.location.href = '1928.html'; // Redirect to next election page
+    }
+  </script>
+</body>
+</html>

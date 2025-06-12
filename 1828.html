@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Election of 1828</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      max-width: 700px;
+      margin: auto;
+      padding: 20px;
+      background: #f4f4f4;
+    }
+    .candidate {
+      padding: 15px;
+      margin: 10px 0;
+      border-radius: 8px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      display: flex;
+      align-items: center;
+      color: white;
+    }
+    .candidate img {
+      width: 80px;
+      height: 80px;
+      border-radius: 8px;
+      margin-right: 15px;
+      object-fit: cover;
+      flex-shrink: 0;
+      border: 2px solid white;
+    }
+    .candidate-details {
+      flex-grow: 1;
+    }
+    button {
+      padding: 10px 15px;
+      margin-top: 10px;
+      background: #007bff;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    button:hover {
+      background: #0056b3;
+    }
+    /* Different background colors per candidate */
+    .jackson { background-color: #3333ff; }       /* Dodger Blue */
+    .adams { background-color: #ffe6b0; }        /* Crimson Red */
+     </style>
+</head>
+<body>
+  <h1>U.S. Presidential Election Simulator</h1>
+  <h2>Election of 1828</h2>
+
+    <div class="candidate jackson">
+    <img src="andrew_jackson.jpg" alt="Andrew Jackson" />
+    <div class="candidate-details">
+      <h3>Andrew Jackson</h3>
+      <p><strong>Party:</strong> Democrat</p>
+      <p><strong>Bio:</strong> War hero and populist leader, ran as a champion of the "common man" and defeated incumbent President Adams.</p>
+      <button onclick="vote('Andrew Jackson')">Vote for Andrew Jackson</button>
+    </div>
+  </div>
+
+  <div class="candidate adams">
+    <img src="john_quincy_adams.jpg" alt="John Quincy Adams" />
+    <div class="candidate-details">
+      <h3>John Quincy Adams</h3>
+      <p><strong>Party:</strong> National Republican</p>
+      <p><strong>Bio:</strong> Incumbent President and son of John Adams, known for internal improvements and moral leadership, but unpopular with many voters.</p>
+      <button onclick="vote('John Quincy Adams')">Vote for John Quincy Adams</button>
+    </div>
+  </div>
+
+  <script>
+    function vote(candidate) {
+      localStorage.setItem('vote_1828', candidate);
+      window.location.href = '1832.html'; // Next election
+    }
+  </script>
+</body>
+</html>
+
