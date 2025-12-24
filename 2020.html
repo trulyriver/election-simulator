@@ -48,6 +48,8 @@
 
     .republican { background-color: #e81b23; }
     .democrat { background-color: #3333ff; }
+    .libertarian { background-color: #fed000; }
+    .green { background-color: #17aa5c; }
   </style>
 </head>
 <body>
@@ -74,6 +76,26 @@
     </div>
   </div>
 
+    <div class="candidate libertarian">
+    <img src="jo_jorgensen.jpg" alt="Jo Jorgensen" />
+    <div class="candidate-details">
+      <h3>Jo Jorgensen</h3>
+      <p><strong>Party:</strong> Libertarian</p>
+      <p><strong>Bio:</strong> Academic and activist advocating limited government and individual liberties.</p>
+      <button onclick="vote('Jo Jorgensen')">Vote for Jo Jorgensen</button>
+    </div>
+  </div>
+
+  <div class="candidate green">
+    <img src="howie_hawkins.jpg" alt="Howie Hawkins" />
+    <div class="candidate-details">
+      <h3>Howie Hawkins</h3>
+      <p><strong>Party:</strong> Green</p>
+      <p><strong>Bio:</strong> Green Party co-founder promoting environmentalism and social justice.</p>
+      <button onclick="vote('Howie Hawkins')">Vote for Howie Hawkins</button>
+    </div>
+  </div>
+
   <script>
     function vote(candidate) {
       localStorage.setItem('vote_2020', candidate);
@@ -82,3 +104,4 @@
   </script>
 </body>
 </html>
+
