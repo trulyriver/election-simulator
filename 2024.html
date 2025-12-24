@@ -48,6 +48,8 @@
 
     .republican { background-color: #e81b23; }
     .democrat { background-color: #3333ff; }
+    .libertarian { background-color: #fed000; }
+    .green { background-color: #17aa5c; }
   </style>
 </head>
 <body>
@@ -59,7 +61,7 @@
     <div class="candidate-details">
       <h3>Donald Trump</h3>
       <p><strong>Party:</strong> Republican</p>
-      <p><strong>Bio:</strong> Former President who ran on strict immigration enforcement, "America First" policies, and reversing Biden-era initiatives.</p>
+      <p><strong>Bio:</strong> Former President running on strict immigration enforcement, "America First" policies, and reversing Biden-era initiatives.</p>
       <button onclick="vote('Donald Trump')">Vote for Donald Trump</button>
     </div>
   </div>
@@ -69,12 +71,31 @@
     <div class="candidate-details">
       <h3>Kamala Harris</h3>
       <p><strong>Party:</strong> Democrat</p>
-      <p><strong>Bio:</strong> Former Vice President who ran on protecting abortion rights, expanding economic equity, and combating climate change.
-</p>
+      <p><strong>Bio:</strong> Former Vice President running on protecting abortion rights, expanding economic equity, and combating climate change.</p>
       <button onclick="vote('Kamala Harris')">Vote for Kamala Harris</button>
     </div>
   </div>
 
+  <div class="candidate libertarian">
+    <img src="chase_oliver.jpg" alt="Chase Oliver" />
+    <div class="candidate-details">
+      <h3>Chase Oliver</h3>
+      <p><strong>Party:</strong> Libertarian</p>
+      <p><strong>Bio:</strong> Political activist advocating civil liberties, limited government, and peace‑oriented reform</p>
+      <button onclick="vote('Chase Oliver')">Vote for Chase Oliver</button>
+    </div>
+  </div>
+
+  <div class="candidate green">
+    <img src="jill_stein.jpg" alt="Jill Stein" />
+    <div class="candidate-details">
+      <h3>Jill Stein</h3>
+      <p><strong>Party:</strong> Green</p>
+      <p><strong>Bio:</strong> Physician and longtime activist promoting environmental protection and social justice.</p>
+      <button onclick="vote('Jill Stein')">Vote for Jill Stein</button>
+    </div>
+  </div>
+  
    <script>
     function vote(candidate) {
       localStorage.setItem('vote_2024', candidate);
@@ -83,3 +104,4 @@
   </script>
 </body>
 </html>
+
