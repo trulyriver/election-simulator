@@ -49,6 +49,7 @@
     .republican { background-color: #e81b23; }
     .democrat { background-color: #3333ff; }
     .dixiecrat { background-color: #ff9955; }
+    .progressive { background-color: #a2ed70; }
   </style>
 </head>
 <body>
@@ -85,6 +86,16 @@
     </div>
   </div>
 
+  <div class="candidate progressive">
+    <img src="henry_wallace.jpg" alt="Henry Wallace" />
+    <div class="candidate-details">
+      <h3>Henry Wallace</h3>
+      <p><strong>Party:</strong> Progressive</p>
+      <p><strong>Bio:</strong> Former vice president advocating civil rights, expanded social programs, and peaceful relations with the Soviet Union.</p>
+      <button onclick="vote('Henry Wallace')">Vote for Henry Wallace</button>
+    </div>
+  </div>
+
   <script>
     function vote(candidate) {
       localStorage.setItem('vote_1948', candidate);
@@ -93,3 +104,4 @@
   </script>
 </body>
 </html>
+
