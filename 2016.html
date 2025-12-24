@@ -48,6 +48,8 @@
 
     .republican { background-color: #e81b23; }
     .democrat { background-color: #3333ff; }
+    .libertarian {background-color: #fed000; }
+    .green {background-color: #17aa5c; }
   </style>
 </head>
 <body>
@@ -74,6 +76,26 @@
     </div>
   </div>
 
+  <div class="candidate libertarian">
+    <img src="gary_johnson.jpg" alt="Gary Johnson" />
+    <div class="candidate-details">
+      <h3>Gary Johnson</h3>
+      <p><strong>Party:</strong> Libertarian</p>
+      <p><strong>Bio:</strong> Former Governor of New Mexico emphasizing limited government, fiscal restraint, and personal liberties.</p>
+      <button onclick="vote('Gary Johnson')">Vote for Gary Johnson</button>
+    </div>
+  </div>
+
+  <div class="candidate green">
+    <img src="jill_stein.jpg" alt="Jill Stein" />
+    <div class="candidate-details">
+      <h3>Jill Stein</h3>
+      <p><strong>Party:</strong> Green</p>
+      <p><strong>Bio:</strong> Physician and activist emphasizing environmental action and social justice.</p>
+      <button onclick="vote('Jill Stein')">Vote for Jill Stein</button>
+    </div>
+  </div>
+
   <script>
     function vote(candidate) {
       localStorage.setItem('vote_2016', candidate);
@@ -82,3 +104,4 @@
   </script>
 </body>
 </html>
+
