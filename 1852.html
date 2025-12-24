@@ -48,6 +48,7 @@
 
     .pierce { background-color: #3333ff; }   /* Blue for Democrat */
     .scott { background-color: #f0c862; }    /* Red for Whig */
+    .hale { background-color: #cccc66; }   /* Green for Free Soil */
   </style>
 </head>
 <body>
@@ -74,6 +75,16 @@
     </div>
   </div>
 
+  <div class="candidate hale">
+    <img src="john_p_hale.jpg" alt="John P. Hale" />
+    <div class="candidate-details">
+      <h3>John P. Hale</h3>
+      <p><strong>Party:</strong> Free Soil</p>
+      <p><strong>Bio:</strong> Senator from New Hampshire who opposed the expansion of slavery into new territories.</p>
+      <button onclick="vote('John P. Hale')">Vote for John P. Hale</button>
+    </div>
+  </div>
+
   <script>
     function vote(candidate) {
       localStorage.setItem('vote_1852', candidate);
@@ -82,3 +93,4 @@
   </script>
 </body>
 </html>
+
