@@ -48,6 +48,9 @@
 
     .republican { background-color: #e81b23; }
     .democrat { background-color: #3333ff; }
+    .libertarian { background-color: #fed000; }
+    .green { background-color: #17aa5c; }
+    .reform {background-color: #6a287e; }
   </style>
 </head>
 <body>
@@ -74,6 +77,36 @@
     </div>
   </div>
 
+  <div class="candidate libertarian">
+    <img src="harry_browne.jpg" alt="Harry Browne" />
+    <div class="candidate-details">
+      <h3>Harry Browne</h3>
+      <p><strong>Party:</strong> Libertarian</p>
+      <p><strong>Bio:</strong> Investment advisor advocating for minimal government, abolition of income tax, and expanded personal freedoms.</p>
+      <button onclick="vote('Harry Browne')">Vote for Harry Browne</button>
+    </div>
+  </div>
+
+   <div class="candidate green">
+    <img src="ralph_nader.jpg" alt="Ralph Nader" />
+    <div class="candidate-details">
+      <h3>Ralph Nader</h3>
+      <p><strong>Party:</strong> Green</p>
+      <p><strong>Bio:</strong> Lawyer and political activist focused on environmental protection, consumer rights, and political reform.</p>
+      <button onclick="vote('Ralph Nader')">Vote for Ralph Nader</button>
+    </div>
+  </div>
+
+    <div class="candidate reform">
+    <img src="pat_buchanan.jpg" alt="Pat Buchanan" />
+    <div class="candidate-details">
+      <h3>Pat Buchanan</h3>
+      <p><strong>Party:</strong> Reform</p>
+      <p><strong>Bio:</strong> Conservative commentator and politician promoting economic nationalism, immigration limits, and cultural conservatism.</p>
+      <button onclick="vote('Pat Buchanan')">Vote for Pat Buchanan</button>
+    </div>
+  </div>
+  
   <script>
     function vote(candidate) {
       localStorage.setItem('vote_2000', candidate);
@@ -82,3 +115,4 @@
   </script>
 </body>
 </html>
+
