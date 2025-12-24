@@ -48,6 +48,8 @@
 
     .republican { background-color: #e81b23; }
     .democrat { background-color: #3333ff; }
+    .libertarian { background-color: #fed000; }
+    .green { background-color: #17aa5c; }
   </style>
 </head>
 <body>
@@ -69,8 +71,28 @@
     <div class="candidate-details">
       <h3>Mitt Romney</h3>
       <p><strong>Party:</strong> Republican</p>
-      <p><strong>Bio:</strong> Former Governor of Massachusetts, emphasized economic recovery and reducing government spending.</p>
+      <p><strong>Bio:</strong> Former Governor of Massachusetts emphasizing economic recovery and reducing government spending.</p>
       <button onclick="vote('Mitt Romney')">Vote for Mitt Romney</button>
+    </div>
+  </div>
+
+  <div class="candidate libertarian">
+    <img src="gary_johnson.jpg" alt="Gary Johnson" />
+    <div class="candidate-details">
+      <h3>Gary Johnson</h3>
+      <p><strong>Party:</strong> Libertarian</p>
+      <p><strong>Bio:</strong> Former Governor of New Mexico advocating limited government, lower taxes, and expanded personal liberties.</p>
+      <button onclick="vote('Gary Johnson')">Vote for Gary Johnson</button>
+    </div>
+  </div>
+
+  <div class="candidate green">
+    <img src="jill_stein.jpg" alt="Jill Stein" />
+    <div class="candidate-details">
+      <h3>Jill Stein</h3>
+      <p><strong>Party:</strong> Green</p>
+      <p><strong>Bio:</strong> Physician and activist promoting environmental protection and social justice.</p>
+      <button onclick="vote('Jill Stein')">Vote for Jill Stein</button>
     </div>
   </div>
 
@@ -82,3 +104,4 @@
   </script>
 </body>
 </html>
+
