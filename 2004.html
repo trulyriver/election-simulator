@@ -48,6 +48,9 @@
 
     .republican { background-color: #e81b23; }
     .democrat { background-color: #3333ff; }
+    .libertarian { background-color: #fed000; }
+    .green { background-color: #17aa5c; }
+    .independent { background-color: #ddddbb; }
   </style>
 </head>
 <body>
@@ -74,6 +77,36 @@
     </div>
   </div>
 
+  <div class="candidate libertarian">
+    <img src="michael_badnarik.jpg" alt="Michael Badnarik" />
+    <div class="candidate-details">
+      <h3>Michael Badnarik</h3>
+      <p><strong>Party:</strong> Libertarian</p>
+      <p><strong>Bio:</strong> Libertarian activist and software engineer, advocating for individual liberty, limited government, and civil liberties.</p>
+      <button onclick="vote('Michael Badnarik')">Vote for Michael Badnarik</button>
+    </div>
+  </div>
+
+  <div class="candidate green">
+    <img src="david_cobb.jpg" alt="David Cobb" />
+    <div class="candidate-details">
+      <h3>David Cobb</h3>
+      <p><strong>Party:</strong> Green</p>
+      <p><strong>Bio:</strong> Activist, running on a progressive platform emphasizing environmentalism, social justice, and anti-war foreign policy.</p>
+      <button onclick="vote('David Cobb')">Vote for David Cobb</button>
+    </div>
+  </div>
+
+  <div class="candidate independent">
+    <img src="ralph_nader.jpg" alt="Ralph Nader" />
+    <div class="candidate-details">
+      <h3>Ralph Nader</h3>
+      <p><strong>Party:</strong> Independent</p>
+      <p><strong>Bio:</strong> Lawyer, running on a populist platform emphasizing healthcare, environmental protection, and corporate accountability.</p>
+      <button onclick="vote('Ralph Nader')">Vote for Ralph Nader</button>
+    </div>
+  </div>
+
   <script>
     function vote(candidate) {
       localStorage.setItem('vote_2004', candidate);
@@ -82,3 +115,4 @@
   </script>
 </body>
 </html>
+
