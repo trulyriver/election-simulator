@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NYC Mayoral Election Simulator</title>
+
+  <link rel="icon" type="image/png" href="favicon.png">
+
+  <style>
+
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background: #4194cb;
+      color: white;
+    }
+
+    .container {
+      max-width: 800px;
+      margin: auto;
+      padding: 20px;
+    }
+
+    h1, h2, p {
+      text-align: center;
+    }
+
+    .button {
+      display: block;
+      margin: 30px auto;
+      padding: 15px 25px;
+      font-size: 16px;
+      background-color: #3333ff;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      width: 300px;
+    }
+
+    .button:hover {
+      background-color: #1d1dff;
+    }
+
+    .hidden {
+      display: none;
+    }
+
+    .background {
+      padding: 60px 20px;
+      text-shadow: 1px 1px 2px #000;
+    }
+
+  </style>
+</head>
+
+<body>
+
+  <!-- PAGE 1 -->
+  <div class="container" id="page1">
+
+    <div class="background">
+
+      <h1>NYC Mayoral Election Simulator</h1>
+
+      <p>
+        Step into New York City’s political history and vote in mayoral elections across decades of change.
+      </p>
+
+      <button class="button" onclick="goToPage2()">
+        Begin Simulation
+      </button>
+
+    </div>
+
+  </div>
+
+  <!-- PAGE 2 -->
+  <div class="container hidden" id="page2">
+
+    <div class="background">
+
+      <h2>Welcome to the Election of 1965</h2>
+
+      <p>
+        New York City is entering a new political era. The mayoral race will shape the city’s future.
+      </p>
+
+      <button class="button" onclick="startNYC()">
+        Continue to Election
+      </button>
+
+    </div>
+
+  </div>
+
+  <script>
+
+    function goToPage2() {
+      document.getElementById("page1").classList.add("hidden");
+      document.getElementById("page2").classList.remove("hidden");
+    }
+
+    function startNYC() {
+      window.location.href = "nyc-1897.html";
+    }
+
+  </script>
+
+</body>
+</html>
