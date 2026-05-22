@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Your NYC Election Voting Summary</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      max-width: 800px;
+      margin: auto;
+      padding: 20px;
+      background: #f4f4f4;
+      color: #333;
+    }
+    h1, h2 {
+      text-align: center;
+    }
+    .vote-list {
+      background: white;
+      border-radius: 8px;
+      padding: 15px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      margin-bottom: 30px;
+    }
+    .vote-item {
+      margin-bottom: 10px;
+    }
+    .leaning {
+      font-weight: bold;
+      font-size: 20px;
+      text-align: center;
+      padding: 15px;
+      border-radius: 8px;
+      color: white;
+      max-width: 400px;
+      margin: auto;
+    }
+    .republican {
+      background-color: #e81b23;
+    }
+    .democrat {
+      background-color: #3333ff;
+    }
+    .other {
+      background-color: #777;
+    }
+    button {
+      cursor: pointer;
+      font-size: 16px;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 6px;
+      background-color: #007bff;
+      color: white;
+      transition: background-color 0.3s ease;
+    }
+    button:hover {
+      background-color: #0056b3;
+    }
+  </style>
+  <!-- jsPDF library -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+</head>
+<body>
+  <h1>Your NYC Election Voting Summary</h1>
+  
+  <div class="vote-list" id="voteList">
+    <h2>Your Votes:</h2>
+    <!-- Votes will be listed here -->
+  </div>
+
+  <div id="leaningMessage" class="leaning"></div>
+
+  <div style="text-align: center; margin-top: 20px;">
+    <button onclick="downloadPDF()">Download Results as PDF</button>
+
+    <button onclick="startOver()" style="margin-left: 10px; background-color: #dc3545;">Start Over</button>
+
+
+  </div>
+
+  <script>
+    const electionYears = [
+      1897, 1901, 1903, 1905, 1909, 1913, 1917, 1921, 1925, 1929, 1932, 1933, 
+      1937, 1941, 1945, 1949, 1953, 1957, 1961, 1965, 1969, 1973, 1977, 1981, 
+      1985, 1989, 1993, 1997, 2001, 2005, 2009, 2013, 2017, 2021, 2025
+    ];
+
+    // Candidate-party map per election year
+    const candidatePartyMapByYear = {
+      1897: {
+        "Robert A. Van Wyck": "Democrat",
+        "Seth Low": "Citizens Union",
+        "Benjamin F. Tracy": "Republican",
+      },
+      1901: {
+        "Seth Low": "Republican",
+        "Edward M. Shepard": "Democrat",
+      },
+      1903: {
+        "George B. McClellan Jr.": "Democrat",
+        "Seth Low": "Republican",
+      },
+      1905: {
+        "George B. McClellan Jr.": "Democrat",
+        "William Randolph Hearst": "Municipal Ownership League",
+        "William Mills Ivins Sr.": "Republican",
+      },
+      1909: {
+        "William Jay Gaynor": "Democrat",
+        "Otto Bannard": "Republican",
+        "William Randolph Hearst": "Municipal Ownership League",
+      },
+      1913: {
+        "John P. Mitchel": "Fusion",
+        "Edward E. McCall": "Democrat",
+        "Charles Edward Russell": "Socialist",
+      },
+      1917: {
+        "John F. Hylan": "Democrat",
+        "John P. Mitchel": "Fusion",
+        "Morris Hillquit": "Socialist",
+        "William M. Bennett": "Republican",
+      },
+      1921: {
+        "John F. Hylan": "Democrat",
+        "Henry H. Curran": "Republican",
+        "Jacob Panken": "Socialist",
+      },
+      1925: {
+        "Jimmy Walker": "Democrat",
+        "Frank D. Waterman": "Republican",
+      },
+      1929: {
+        "Jimmy Walker": "Democrat",
+        "Fiorello H. La Guardia": "Republican",
+        "Norman Thomas": "Socialist",
+      },
+      1932: {
+        "John P. OBrien": "Democrat",
+        "Lewis H. Pounds": "Republican",
+        "Morris Hillquit": "Socialist",
+        "Joseph V. McKee": "Independent",
+      },
+      1933: {
+        "Fiorello La Guardia": "Republican",
+        "Joseph V. McKee": "Recovery",
+        "John P. OBrien": "Democrat",
+      },
+      1937: {
+        "Fiorello La Guardia": "Republican",
+        "Jeremiah T. Mahoney": "Democrat",
+      },
+      1941: {
+        "Fiorello La Guardia": "Republican",
+        "William ODwyer": "Democrat",
+      },
+      1945: {
+        "William ODwyer": "Democrat",
+        "Jonah J. Goldstein": "Republican",
+        "Newbold Morris": "No Deal",
+      },
+      1949: {
+        "William ODwyer": "Democrat",
+        "Newbold Morris": "Republican",
+        "Vito Marcantonio": "American Labor",
+      },
+      1950: {
+        "Vincent R. Impellitteri": "Experience",
+        "Ferdinand Pecora": "Democrat",
+        "Edward F. Corsi": "Republican",
+        "Paul Ross": "American Labor",
+      },
+      1953: {
+        "Robert F. Wagner Jr.": "Democrat",
+        "Harold Riegelman": "Republican",
+        "Rudolph Halley": "Liberal",
+      },
+      1957: {
+        "Robert F. Wagner Jr.": "Democrat",
+        "Robert K. Christenberry": "Republican",
+      },
+      1961: {
+        "Robert F. Wagner Jr.": "Democrat",
+        "Louis J. Lefkowitz": "Republican",
+        "Lawrence E. Gerosa": "Citizens",
+      },
+      1965: {
+        "John Lindsay": "Republican",
+        "Abraham Beame": "Democrat",
+        "William F. Buckley Jr.": "Conservative",
+      },
+      1969: {
+        "John Lindsay": "Liberal",
+        "Mario Procaccino": "Democrat",
+        "John J. Marchi": "Republican",
+      },
+      1973: {
+        "Abraham Beame": "Democrat",
+        "John J. Marchi": "Republican",
+        "Albert H. Blumenthal": "Liberal",
+        "Mario Biaggi": "Conservative",
+      },
+      1977: {
+        "Ed Koch": "Democrat",
+        "Mario Cuomo": "Republican",
+      },
+      1981: {
+        "Ed Koch": "Democrat",
+        "Frank J. Barbaro": "Unity",
+      },
+      1985: {
+        "Ed Koch": "Democrat",
+        "Carol Bellamy": "Liberal",
+        "Diane McGrath": "Republican",
+      },
+      1989: {
+        "David Dinkins": "Democrat",
+        "Rudy Giuliani": "Republican",
+      },
+      1993: {
+        "Rudy Giuliani": "Republican",
+        "David Dinkins": "Democrat",
+      },
+      1997: {
+        "Rudy Giuliani": "Republican",
+        "Ruth Messinger": "Democrat",
+      },
+      2001: {
+        "Michael Bloomberg": "Republican",
+        "Mark Green": "Democrat",
+      },
+      2005: {
+        "Michael Bloomberg": "Republican",
+        "Fernando Ferrer": "Democrat",
+      },
+      2009: {
+        "Michael Bloomberg": "Independent",
+        "Bill Thompson": "Democrat",
+      },
+      2013: {
+        "Bill de Blasio": "Democrat",
+        "Joe Lhota": "Republican",
+      },
+      2017: {
+        "Bill de Blasio": "Democrat",
+        "Nicole Malliotakis": "Republican",
+      },
+      2021: {
+        "Eric Adams": "Democrat",
+        "Curtis Sliwa": "Republican",
+      },
+      2025: {
+        "Zohran Mamdani": "Democrat",
+        "Andrew Cuomo": "Independent",
+        "Curtis Sliwa": "Republican",
+         },
+    };
+
+    const partyColors = {
+      "republican": "#e81b23",
+      "democrat": "#3333ff",
+      "citizens union": "#cc8727",
+      "municipal ownership league": "#cd7f32",
+      "fusion": "#79cdcd",
+      "socialist": "#cd3700",
+      "recovery": "#336699",
+      "no deal": "#c0c0c0",
+      "experience": "#73d873",
+      "liberal": "#cc0000",
+      "citizens": "#dddddd",
+      "conservative": "#ff8c00",
+      "unity": "#808000",
+      "independent": "#dcdcdc",
+      "american labor": "#ff6347",
+      "other": "#777777"
+    };
+
+    const voteListDiv = document.getElementById('voteList');
+    const leaningDiv = document.getElementById('leaningMessage');
+
+    let votes = [];
+    let partyCount = { republican: 0, democrat: 0, liberal: 0, "unity": 0, other: 0 };
+
+    electionYears.forEach(year => {
+      const key = `nyc_${year}`;
+      const candidate = localStorage.getItem(key);
+      if (candidate) {
+        const partiesForYear = candidatePartyMapByYear[year] || {};
+        let party = partiesForYear[candidate] || "Other";
+
+        votes.push({ year, candidate, party });
+        partyCount[party.toLowerCase()] = (partyCount[party.toLowerCase()] || 0) + 1;
+      }
+    });
+
+    if (votes.length === 0) {
+      voteListDiv.innerHTML += '<p>You have not voted in any elections yet.</p>';
+    } else {
+      votes.forEach(v => {
+        const partyKey = v.party.toLowerCase();
+        const color = partyColors[partyKey] || partyColors["other"];
+        const voteHTML = `
+          <div class="vote-item" style="border-left: 5px solid ${color}; padding-left: 10px;">
+            <strong>${v.year}:</strong> ${v.candidate} <em>(${v.party})</em>
+          </div>`;
+        voteListDiv.innerHTML += voteHTML;
+      });
+    }
+
+    const rep = partyCount["republican"] || 0;
+    const dem = partyCount["democrat"] || 0;
+
+    if (rep === 0 && dem === 0) {
+      leaningDiv.textContent = "Not enough data to determine your political leaning.";
+      leaningDiv.className = "leaning other";
+    } else if (rep > dem) {
+      leaningDiv.textContent = `You lean more Republican (${rep} Republican votes vs ${dem} Democrat votes).`;
+      leaningDiv.className = "leaning republican";
+    } else if (dem > rep) {
+      leaningDiv.textContent = `You lean more Democrat (${dem} Democrat votes vs ${rep} Republican votes).`;
+      leaningDiv.className = "leaning democrat";
+    } else {
+      leaningDiv.textContent = `You have an even split between Republican and Democrat votes (${rep} each).`;
+      leaningDiv.className = "leaning other";
+    }
+
+    function downloadPDF() {
+  const { jsPDF } = window.jspdf;
+  const doc = new jsPDF();
+
+  const pageHeight = doc.internal.pageSize.height || 297; // default page height in mm
+  const margin = 10;
+  let y = margin;
+
+  doc.setFontSize(16);
+  doc.text("Your NYC Election Voting Summary", margin, y);
+  y += 10;
+
+  doc.setFontSize(12);
+
+  votes.forEach(vote => {
+    if (y > pageHeight - margin) {
+      doc.addPage();
+      y = margin;
+    }
+    doc.text(`${vote.year}: ${vote.candidate} (${vote.party})`, margin, y);
+    y += 8;
+  });
+
+  y += 10;
+  if (y > pageHeight - margin) {
+    doc.addPage();
+    y = margin;
+  }
+  doc.setFontSize(14);
+  doc.text(leaningDiv.textContent, margin, y);
+
+  doc.save("nyc_results.pdf");
+}
+
+function startOver() {
+  if (confirm("Are you sure you want to start over? This will clear all your saved votes.")) {
+    Object.keys(localStorage)
+      .filter(key => key.startsWith("nyc_"))
+      .forEach(key => localStorage.removeItem(key));
+    window.location.href = "index.html"; // <-- change this if your intro page has a different name
+  }
+}
+
+  </script>
+</body>
+</html>
+
+
+
+
+
+
+
