@@ -59,6 +59,35 @@
       text-shadow: 1px 1px 2px #000;
     }
 
+    /* Discord button */
+
+    .discord-button {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      width: 60px;
+      height: 60px;
+      background: #5865F2;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-decoration: none;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+      transition: transform 0.2s, background 0.2s;
+    }
+
+    .discord-button:hover {
+      background: #4752C4;
+      transform: scale(1.1);
+    }
+
+    .discord-button img {
+      width: 35px;
+      height: 35px;
+      filter: brightness(0) invert(1);
+    }
+
   </style>
 </head>
 
@@ -106,6 +135,19 @@
     </p>
 
   </div>
+
+  <!-- Discord Button -->
+  <a
+    href="https://discord.gg/CNmCZ6XHZf"
+    target="_blank"
+    class="discord-button"
+    aria-label="Join our Discord server"
+  >
+    <img
+      src="https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/discord.svg"
+      alt="Discord"
+    >
+  </a>
 
   <script>
 
