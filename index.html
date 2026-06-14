@@ -7,6 +7,12 @@
 
   <link rel="icon" type="image/png" href="favicon.png">
 
+  <meta property="og:title" content="The Election Simulator">
+  <meta property="og:description" content="Vote in elections throughout American history!">
+  <meta property="og:image" content="https://trulyriver.github.io/election-simulator/thumbnail.png">
+  <meta property="og:url" content="https://trulyriver.github.io/election-simulator/">
+  <meta property="og:type" content="website">
+
   <style>
 
     body {
@@ -15,19 +21,6 @@
       padding: 0;
       background: #4194cb;
       color: white;
-    }
-
-    html.dark body {
-      background: #121212 !important;
-      color: white;
-    }
-
-    html.dark .button {
-      background-color: #4444ff;
-    }
-
-    html.dark .button:hover {
-      background-color: #2f2fff;
     }
 
     .container {
@@ -66,6 +59,8 @@
       text-shadow: 1px 1px 2px #000;
     }
 
+    /* Discord button */
+
     .discord-button {
       position: fixed;
       bottom: 20px;
@@ -98,19 +93,7 @@
 
 <body>
 
-<!-- ONLY BUTTON IN ENTIRE SYSTEM -->
-<button onclick="toggleDarkMode()" style="
-  position: fixed;
-  top: 20px;
-  right: 20px;
-  z-index: 9999;
-  padding: 10px 15px;
-  border: none;
-  border-radius: 8px;
-  cursor: pointer;
-">
-  🌙 Dark Mode
-</button>
+  <!-- PAGE 1 -->
 
   <div class="container">
 
@@ -145,35 +128,34 @@
 
   </div>
 
-  <a href="https://discord.gg/CNmCZ6XHZf" target="_blank" class="discord-button">
-    <img src="https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/discord.svg">
+  <!-- Discord Button -->
+  <a
+    href="https://discord.gg/CNmCZ6XHZf"
+    target="_blank"
+    class="discord-button"
+    aria-label="Join our Discord server"
+  >
+    <img
+      src="https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/discord.svg"
+      alt="Discord"
+    >
   </a>
 
-<script>
+  <script>
 
-function toggleDarkMode() {
-  const isDark = document.documentElement.classList.toggle("dark");
-  localStorage.setItem("darkMode", isDark ? "on" : "off");
-}
+    function goToPresidential() {
+      window.location.href = "vote.html";
+    }
 
-// THIS is what makes ALL 400 pages follow it automatically
-if (localStorage.getItem("darkMode") === "on") {
-  document.documentElement.classList.add("dark");
-}
+    function goToNYC() {
+      window.location.href = "nyc-index.html";
+    }
 
-function goToPresidential() {
-  window.location.href = "vote.html";
-}
+    function comingSoon() {
+      alert("This election route is coming soon.");
+    }
 
-function goToNYC() {
-  window.location.href = "nyc-index.html";
-}
-
-function comingSoon() {
-  alert("This election route is coming soon.");
-}
-
-</script>
+  </script>
 
 </body>
 </html>
